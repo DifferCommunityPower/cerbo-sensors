@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#	GLT500 RS485 to USB adapter depth sensor
+#	Setup script (install/uninstall)
+#
+# this script will accept the following commands on the command line:
+#	setup install
+#	setup uninstall
+#	setup reinstall (used to reinstall after Venus OS update)
+
+packageLogFile="/var/log/dbus-dcp-tank/current"
+
+#### following line incorporates SetupHelper utilities into this script
+# Refer to the SetupHelper ReadMe file for details.
+
+source "/data/SetupHelper/CommonResources"
+
+# GitHub account info - fill in as appropriate
+# to include this package in SetupHelper automatic updates
+packageGitHubUser="DifferCommunityPower"
+packageGitHubBranch="dev"
+
+#### end of lines to include SetupHelper
+
+#### running manually and OK to proceed - prompt for input
+if [ "$scriptAction" == 'NONE' ] ; then
+    # display initial message
+    echo "This package reads values from a GLT500 depth sensor and forwards to the Victron Dbus, as tank level"
+
+    scriptAction='INSTALL'
+fi
+
+#### install code goes here
+if [ "$scriptAction" == 'INSTALL' ] ; then
+
+    logMessage "++ Installing Victron Dbus GLT500 depth sensor"
+
+    installService "$packageName"
+fi
+
+#### uninstalling - check scriptAction again
+# if an install step failed package needs to be removed
+if [ "$scriptAction" == 'UNINSTALL' ] ; then
+    logMessage "++ Uninstalling Victron Dbus GLT500 depth sensor"
+
+    removeService "$packageName"
+fi
+endScript
