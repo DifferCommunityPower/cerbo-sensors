@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#	GLT500 RS485 to USB adapter depth sensor
+#	GLT500 RS485 to USB adapter depth sensor 
 #	Setup script (install/uninstall)
 #
 # this script will accept the following commands on the command line:
