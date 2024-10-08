@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "*** starting dbus-dcp-tank ***"
+exec 2>&1
+exec /data/etc/dbus-dcp-tank/dbus-dcp-tank.py
